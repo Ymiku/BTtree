@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,18 +13,14 @@ namespace BT {
 		public BTNode root {get {return _root;}
 			set{_root = value;}
 		}
-		protected BTDatabase _database = new BTDatabase();
+		protected BTDatabase _database;
 
 		public List<EditorData> _editorData = new List<EditorData>();
 		public Vector2 _editorOffset = Vector2.zero;
 
 
-		public BTTree(CharacterManager characterManager)
-		{
-			_database.characterManager = characterManager;
-		}
-		public void Initialize () {
-			_root = Construct();
+		public void Initialize (BTDatabase data) {
+			_database = data;
 			if (_root.name == null) {
 				_root.name = "Root";
 			}
@@ -70,14 +66,7 @@ namespace BT {
 		/// Init this tree by constructing the behavior tree.
 		/// Root node should be returned.
 		/// </summary>
-		public virtual BTNode Construct () {
-			_database = new BTDatabase();//GetComponent<BTDatabase>();
-			if (_database == null) {
-				_database = new BTDatabase();// gameObject.AddComponent<BTDatabase>();
-			}
 
-			return null;
-		}
 	}
 
 }
