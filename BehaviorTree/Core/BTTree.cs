@@ -58,7 +58,6 @@ namespace BT {
 		}
 
 		public void Update () {
-			_database.characterManager.localEventManager.Move (0f,0f);
 			_root.Tick();
 		}
 
