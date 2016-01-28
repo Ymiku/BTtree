@@ -1,11 +1,12 @@
 # BTtree
 BehaviorTree for unity
 
+/*
 
 
 2016.1.28 editor bug fixed
 
-
+*/
 
 Based on Yifeng Wu's BehaviorTree Framework,improve the visulization tool.
 
