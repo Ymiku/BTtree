@@ -1,7 +1,11 @@
 # BTtree
 BehaviorTree for unity
 
+
+
 2016.1.28 editor bug fixed
+
+
 
 Based on Yifeng Wu's BehaviorTree Framework,improve the visulization tool.
 
@@ -17,6 +21,7 @@ Add AIManager and CharacterManager to target gameobject
 
 
 CharacterManager is a class that contains player information，such as HP，MP and component
+
 this is My define
 
 using UnityEngine;
