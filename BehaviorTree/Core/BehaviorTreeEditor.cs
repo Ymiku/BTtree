@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -507,11 +507,32 @@ namespace BT
 			{
 				( (BTDecorator)newNode ).child = ( (BTDecorator)oldNode ).child;
 				( (BTDecorator)oldNode ).child = null;
+				_editorData[( (BTDecorator)newNode ).child.id].parent = ( (BTDecorator)newNode );
+
 			}
 			else if ( oldNode is BTComposite && newNode is BTComposite )
 			{
 				( (BTComposite)newNode ).children = ( (BTComposite)oldNode ).children;
 				( (BTComposite)oldNode ).children = null;
+				for (int i = 0; i < ( (BTComposite)newNode ).children.Count; i++) {
+					_editorData[( (BTComposite)newNode ).children[i].id].parent = ( (BTComposite)newNode );
+				}
+			}
+			else if ( oldNode is BTDecorator && newNode is BTComposite )
+			{
+				( (BTComposite)newNode ).children = new List<BTNode>{( (BTDecorator)oldNode ).child};
+				( (BTDecorator)oldNode ).child = null;
+				_editorData[( (BTComposite)newNode ).children[0].id].parent = ( (BTComposite)newNode );
+			}
+			else if ( oldNode is BTComposite && newNode is BTDecorator )
+			{
+				if(( (BTComposite)oldNode ).children.Count>0)
+				{
+					( (BTDecorator)newNode ).child =  ( (BTComposite)oldNode ).children[0];
+					_editorData[( (BTDecorator)newNode ).child.id].parent = ( (BTDecorator)newNode );
+				}
+				( (BTComposite)oldNode ).children = null;
+
 			}
 			DeleteNode( oldNode, false );
 
@@ -601,4 +622,5 @@ namespace BT
 		}
 	}
 }
+
 
