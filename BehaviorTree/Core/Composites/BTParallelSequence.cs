@@ -43,12 +43,11 @@ namespace BT {
 		
 		public override void Clear () {
 			base.Clear();
-			if (isRunning) {
+			//if (isRunning) {
 				for (int i = 0; i < children.Count; i++) {
 					if(!_completeChildNumList.Contains(i))
-						children[i].Clear();
 				}
-			}
+			//}
 			_completeChildNumList.Clear ();
 		}
 	}
